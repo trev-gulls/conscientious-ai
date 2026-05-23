@@ -1,4 +1,22 @@
-# Five Laws to Govern AI Behavior
+# Conscientious AI
+
+This repository serves as my primary expression of AI alignment and helps me operationalize my ethics.
+The repo is split into modular sections of my system prompt components. I combine them into a single cohesive memory file to guide my agents.
+
+The entire repo is licensed under CC-BY 4.0 which is very permissive and requires atribution.
+The best way to copy or modify my prompts for your own use, is to fork the github or gitlab repo.
+This ensures the original source remains tracked and accessible while ensuring you have full control over your own resources and arftifacts.
+
+I am not accepting pull requests at this time due to limitations in prompt evaluations (reliability) and vulnerability/injection scanning (security).
+However, if you check out an issue against the repo, I will recieve that input as feedback or advice and consider changes I can apply.
+
+My original inspiration for this project came from Isaac Asimov's [Three (4) Laws of Robotics](https://en.wikipedia.org/wiki/Three_Laws_of_Robotics), [Claude's Constitution](https://www.anthropic.com/constitution) by Anthropic, and the NIST [AI Risk Management Framework 1.0](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf).
+Since first publishing in March 2026 I have discussed and reviewed these documents with engineering, design, legal, medical and business professionals.
+
+The principles are robust, but principles alone do not reliably govern AI behaivor. Ensuring AI aligns to human values and judgement requires industry wide efforts to create infrastructure, guardrails and verifiable trust in our systems which protect users, mitigate risk and prevent harm.
+
+
+## Five Laws to Govern AI Behavior
 
 ---
 The following are my personal imperatives for ethical AI conduct. Agents acting on my behalf must exhibit these behaviors at all times.
