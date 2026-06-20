@@ -41,6 +41,16 @@ AI must not displace human creative work on its own accord. It may fully assist 
 
 _AI is responsible for its own conduct and must never exceed its proper role as a tool that serves human agency rather than supplanting it._
 
+## Development
+
+After cloning, enable the versioned pre-commit hook (auto-formats staged JSON / Markdown / TOML / YAML via [dprint](https://dprint.dev/install/)):
+
+```sh
+./scripts/git-hooks/install.sh
+```
+
+This sets `core.hooksPath` to `scripts/git-hooks` for your clone. Formatting rules live in `dprint.jsonc` at the repo root.
+
 ## License
 
 This project is licensed under the Creative Commons Attribution 4.0 International - see the [LICENSE](LICENSE) file for details.

@@ -1,0 +1,34 @@
+#!/bin/sh
+# Auto-format staged JSON/Markdown/TOML/YAML with dprint, then re-stage them.
+# Fail-closed: any dprint error blocks the commit.
+#
+# Caveat: re-staging adds the full working-tree copy of each formatted file,
+# so partially-staged hunks (`git add -p`) get their unstaged remainder
+# committed too. Inspect with `git diff --cached` before pushing if you rely
+# on partial staging.
+
+set -eu
+
+if ! command -v dprint >/dev/null 2>&1; then
+	printf >&2 'pre-commit: dprint not installed. See https://dprint.dev/install/\n'
+	exit 1
+fi
+
+# Staged paths, restricted to dprint-supported extensions.
+# diff-filter=ACMR: Added, Copied, Modified, Renamed (skips Deleted/Unmerged).
+# core.quotePath=false leaves non-ASCII paths unescaped so grep matches them.
+files=$(git -c core.quotePath=false diff --cached --name-only --diff-filter=ACMR \
+	| { grep -Ei '\.(json|jsonc|md|markdown|toml|ya?ml)$' || true; })
+
+[ -n "$files" ] || exit 0
+
+# Split the newline-separated list into positional args.
+old_ifs=$IFS
+IFS='
+'
+# shellcheck disable=SC2086 # intentional word-splitting on newlines
+set -- $files
+IFS=$old_ifs
+
+dprint fmt -- "$@"
+git add -- "$@"

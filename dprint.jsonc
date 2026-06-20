@@ -1,0 +1,59 @@
+{
+  // dprint configuration for markup and config files
+  // https://dprint.dev/config/
+
+  "$schema": "https://dprint.dev/schemas/v0.json",
+
+  // Global formatting defaults (matches prettier settings)
+  "lineWidth": 100,
+  "indentWidth": 2,
+  "useTabs": false,
+  "newLineKind": "lf",
+
+  // Files to format
+  "includes": [
+    "**/*.{json,jsonc,md,toml,yaml,yml}"
+  ],
+  "excludes": [
+    "**/node_modules",
+    "**/.git",
+    "**/dist",
+    "**/build",
+    "**/.venv",
+    "**/target",
+    "**/vendor",
+    "**/*.min.*",
+    "**/package-lock.json",
+    "**/bun.lockb",
+    "**/*-lock.json",
+    "**/uv.lock"
+  ],
+
+  // Plugins
+  "plugins": [
+    "https://plugins.dprint.dev/json-0.21.1.wasm",
+    "https://plugins.dprint.dev/markdown-0.20.0.wasm",
+    "https://plugins.dprint.dev/toml-0.7.0.wasm",
+    "https://plugins.dprint.dev/g-plane/pretty_yaml-v0.6.0.wasm"
+  ],
+
+  // Plugin-specific settings
+  "json": {
+    "trailingCommas": "never",
+    "preferSingleLine": false
+  },
+
+  "markdown": {
+    // textWrap: "maintain" preserves existing line breaks (like prettier's proseWrap: preserve)
+    "textWrap": "maintain"
+  },
+
+  "toml": {
+    "comment.forceLeadingSpace": true
+  },
+
+  "yaml": {
+    // pretty_yaml uses printWidth, not lineWidth
+    "printWidth": 100
+  }
+}
